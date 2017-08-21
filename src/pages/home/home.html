@@ -10,38 +10,48 @@
 <ion-row>
 <ion-col col-12>
   <ion-list>
-  <ion-item>
-  <ion-icon name="arrow-round-forward" item-start></ion-icon>
-	<h2>Finn</h2>
-    <h3>Take the trash out</h3>
-    <p>Deadline: 08/31/2017</p>
-	<ion-icon name="thumbs-down" class="over-time" item-end></ion-icon>	
-  </ion-item>
-  <ion-item>
-    <ion-icon name="arrow-round-forward" item-start></ion-icon>
-	<h2>Paul</h2>
-    <h3>Clean the kitchen</h3>
-    <p>Deadline: 08/31/2017</p>
-    <ion-icon name="checkmark-circle" class="done" item-end></ion-icon>
-  </ion-item>
-  <ion-item>
-    <ion-icon name="arrow-round-forward" item-start></ion-icon>
-	<h2>William</h2>
-    <h3>Clean the bathroom</h3>
-    <p>Deadline: 08/31/2017</p>
-    <ion-icon name="alert" class="attention" item-end></ion-icon>
-  </ion-item>
-  <ion-item>
-    <ion-icon name="arrow-round-forward" item-start></ion-icon>
-	<h2>Chris</h2>
-    <h3>Clean the floors</h3>
-    <p>Deadline: 08/31/2017</p>
-    <ion-icon name="checkmark-circle" class="done" item-end></ion-icon>
-  </ion-item>
-</ion-list>
+	  <ion-item>
+	  <ion-icon name="arrow-round-forward" item-start></ion-icon>
+		<h2>Finn</h2>
+		<h3>Take the trash out</h3>
+		<p>Deadline: 08/31/2017</p>
+		<ion-icon name="thumbs-down" class="over-time" item-end></ion-icon>	
+	  </ion-item>
+	  <ion-item>
+		<ion-icon name="arrow-round-forward" item-start></ion-icon>
+		<h2>Paul</h2>
+		<h3>Clean the kitchen</h3>
+		<p>Deadline: 08/31/2017</p>
+		<ion-icon name="checkmark-circle" class="done" item-end></ion-icon>
+	  </ion-item>
+	  <ion-item>
+		<ion-icon name="arrow-round-forward" item-start></ion-icon>
+		<h2>William</h2>
+		<h3>Clean the bathroom</h3>
+		<p>Deadline: 08/31/2017</p>
+		<ion-icon name="alert" class="attention" item-end></ion-icon>
+	  </ion-item>
+	  <ion-item>
+		<ion-icon name="arrow-round-forward" item-start></ion-icon>
+		<h2>Chris</h2>
+		<h3>Clean the floors</h3>
+		<p>Deadline: 08/31/2017</p>
+		<ion-icon name="checkmark-circle" class="done" item-end></ion-icon>
+	  </ion-item>
+	</ion-list>
 </ion-col>
 </ion-row>
 </ion-grid>
 
+<ion-grid>
+	<ion-row>
+		<ion-col col-12>
+			<button ion-button icon-left (click)="showPrompt();">
+			  <ion-icon name="add"></ion-icon>
+			  Add new task
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-grid>
 
 </ion-content>
