@@ -7,8 +7,17 @@ import { NavController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+	  
+  tasks = [
+		{ "id": 0, "name": "Chris", "task": "Clean the bathroom", "status": 0, "deadline": "08/30/2017" },
+		{ "id": 1, "name": "William", "task": "Clean the kitchen", "status": 1, "deadline": "08/30/2017" },
+		{ "id": 2, "name": "Paul", "task": "Take the trash out", "status": 2, "deadline": "08/30/2017" },
+		{ "id": 1, "name": "Ash", "task": "Clean the floors", "status": 1, "deadline": "08/30/2017" }
+	];
 
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+	
+	  
   }
   
  showPrompt() {
