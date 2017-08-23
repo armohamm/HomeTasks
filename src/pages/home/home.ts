@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+import { Tasks } from "./Tasks";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [Tasks]
 })
 export class HomePage {
-
-	  
+		
   tasks = [
-		{ "id": 0, "name": "Chris", "task": "Clean the bathroom", "status": 0, "deadline": "08/30/2017" },
-		{ "id": 1, "name": "William", "task": "Clean the kitchen", "status": 1, "deadline": "08/30/2017" },
-		{ "id": 2, "name": "Paul", "task": "Take the trash out", "status": 2, "deadline": "08/30/2017" },
-		{ "id": 1, "name": "Ash", "task": "Clean the floors", "status": 1, "deadline": "08/30/2017" }
+		{ "TaskId": 0, "Name": "Chris", "Task": "Clean the bathroom", "Status": 0, "Deadline": '2017-08-30' },
+		{ "TaskId": 1, "Name": "William", "Task": "Clean the kitchen", "Status": 1, "Deadline": '2017-08-30' },
+		{ "TaskId": 2, "Name": "Paul", "Task": "Take the trash out", "Status": 2, "Deadline": '2017-08-30' },
+		{ "TaskId": 3, "Name": "Ash", "Task": "Clean the floors", "Status": 1, "Deadline": '2017-08-30' }
 	];
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
@@ -30,8 +31,13 @@ export class HomePage {
           placeholder: 'Title'
         },
 		{
+          name: 'ResponsablePerson',
+          placeholder: 'Responsable Person'
+        },
+		{
           name: 'Deadline',
-          placeholder: 'Deadline'
+          placeholder: 'Deadline',
+		  type: 'Date'
         },
       ],
       buttons: [
@@ -44,11 +50,19 @@ export class HomePage {
         {
           text: 'Add',
           handler: data => {
-            console.log('Add clicked');
+			var task = new Tasks();
+			task.TaskId = this.tasks.length + 1;
+			task.Name = data.ResponsablePerson;
+			task.Task = data.Title;
+			task.Status = 2;
+			task.Deadline = data.Deadline.toString();
+			
+			this.tasks.push(task);
           }
         }
       ]
     });
     prompt.present();
   }
+  
 }

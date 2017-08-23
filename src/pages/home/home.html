@@ -12,12 +12,12 @@
   <ion-list>
 	  <ion-item *ngFor="let task of tasks">
 	  <ion-icon name="arrow-round-forward" item-start></ion-icon>
-		<h2>{{task.name}}</h2>
-		<h3>{{task.task}}</h3>
-		<p>Deadline: <strong>{{task.deadline}}</strong></p>
-		<ion-icon *ngIf="task.status == 0" name="thumbs-down" class="over-time" item-end></ion-icon>	
-		<ion-icon *ngIf="task.status == 1" name="checkmark-circle" class="done" item-end></ion-icon>
-		<ion-icon *ngIf="task.status == 2" name="alert" class="attention" item-end></ion-icon>			
+		<h2>{{task.Name}}</h2>
+		<h3>{{task.Task}}</h3>
+		<p>Deadline: <strong>{{task.Deadline | date :  "EEEE - MMMM d, y"}}</strong></p>
+		<ion-icon *ngIf="task.Status == 0" name="thumbs-down" class="over-time" item-end></ion-icon>	
+		<ion-icon *ngIf="task.Status == 1" name="checkmark-circle" class="done" item-end></ion-icon>
+		<ion-icon *ngIf="task.Status == 2" name="alert" class="attention" item-end></ion-icon>			
 	</ion-item>
 	</ion-list>  
 </ion-col>
