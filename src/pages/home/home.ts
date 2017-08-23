@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController  } from 'ionic-angular';
 import { Tasks } from "./Tasks";
 
 @Component({
@@ -16,7 +16,7 @@ export class HomePage {
 		{ "TaskId": 3, "Name": "Ash", "Task": "Clean the floors", "Status": 1, "Deadline": '2017-08-30' }
 	];
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 	
 	  
   }
@@ -50,19 +50,38 @@ export class HomePage {
         {
           text: 'Add',
           handler: data => {
-			var task = new Tasks();
-			task.TaskId = this.tasks.length + 1;
-			task.Name = data.ResponsablePerson;
-			task.Task = data.Title;
-			task.Status = 2;
-			task.Deadline = data.Deadline.toString();
+			this.presentLoading(data);
 			
-			this.tasks.push(task);
           }
         }
       ]
     });
     prompt.present();
+  }
+  
+  presentLoading(data) {
+    let loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+	});
+
+  loading.present();
+
+  setTimeout(() => {
+    loading.dismiss();
+	this.addTask(data);
+  }, 2000);
+    
+	
+  }
+  
+  addTask(data){
+	  var task = new Tasks();
+		task.TaskId = this.tasks.length + 1;
+		task.Name = data.ResponsablePerson;
+		task.Task = data.Title;
+		task.Status = 2;
+		task.Deadline = data.Deadline.toString();
+		this.tasks.push(task);
   }
   
 }

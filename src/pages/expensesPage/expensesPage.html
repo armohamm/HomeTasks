@@ -8,46 +8,37 @@
 
 <ion-grid>
 	<ion-row>
-		<ion-col col-12 align="left">
-			<button ion-button color="secondary" icon-left>
+		<ion-col col-12 align="right">
+			<button ion-button color="secondary" icon-left (click)="showPrompt();">
 			  <ion-icon name="add"></ion-icon>
 			  Add new expense
 			</button>
 		</ion-col>
 	</ion-row>
 	<ion-row>
-		<ion-col col-4 align="center">
-			<b>Description</b>
+		<ion-col col-4 align="center" class="column-headers">
+			Description
 		</ion-col>
-		<ion-col col-4 align="center">
-			<b>Type</b>
+		<ion-col col-4 align="center" class="column-headers">
+			Type
 		</ion-col>
 		<ion-col col-4 align="center">
 			
 		</ion-col>
 	</ion-row>
-	<ion-row>
-		<ion-col col-4 align="center">
-			Toilet papers
-		</ion-col>
-		<ion-col col-4 align="center">
-			Bathroom
-		</ion-col>
-		<ion-col col-4 align="center">
-			<a href="#"><ion-icon name="search" item-start></ion-icon> Detail</a>
-		</ion-col>
-	</ion-row>
-	<ion-row>
-		<ion-col col-4 align="center">
-			Napkings
-		</ion-col>
-		<ion-col col-4 align="center">
-			Kitchen
-		</ion-col>
-		<ion-col col-4 align="center">
-			<a href="#"><ion-icon name="search" item-start></ion-icon> Detail</a>
-		</ion-col>
-	</ion-row>
+	<ion-item *ngFor="let expense of expenses">
+		<ion-row>
+			<ion-col col-4 align="center">
+				{{expense.Description}}
+			</ion-col>
+			<ion-col col-4 align="center">
+				{{expense.Type}}
+			</ion-col>
+			<ion-col col-4 align="center">
+				<a (click)="viewExpense(expense.ExpenseId)"><ion-icon name="search" item-start></ion-icon> Detail </a>
+			</ion-col>
+		</ion-row>
+	</ion-item>
 </ion-grid>
 
 </ion-content>
