@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { Expense } from "./expense";
 
 @Component({
   selector: 'page-contact',
-  templateUrl: 'expensesPage.html'
+  templateUrl: 'expensesPage.html',
+  providers: [Expense]
 })
 export class ExpensesPage {
 
@@ -14,7 +16,7 @@ export class ExpensesPage {
 		{ "ExpenseId": 3, "Description": "New soap", "Type": "Bathroom", "Value": 5.00 }
 	];
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 
   }
   
@@ -46,25 +48,49 @@ export class ExpensesPage {
         {
           text: 'Add',
           handler: data => {
-			   console.log('Cancel clicked');
+			   this.presentLoading(data);
           }
         }
       ]
     });
     prompt.present();
   }
+  
+  presentLoading(data) {
+    let loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+	});
 
-	  viewExpense(id){
-		  var expense = this.expenses.find(myObj => myObj.ExpenseId == id);
-		  let alert = this.alertCtrl.create({
-			  title: '<h1>' + expense.Description + '</h1>',
-			  subTitle: '<b>Value:</b> $' +  this.formatMoney(expense.Value) + '<br/> <b>Type:</b> ' + expense.Type,
-			  buttons: ['OK']
-			});
-			alert.present();
-	  }
+  loading.present();
+
+  setTimeout(() => {
+    loading.dismiss();
+	this.addExepense(data);
+  }, 2000);
+    
+	
+  }
+  
+  addExepense(data){
+	  var expense = new Expense();
+		expense.ExpenseId = this.expenses.length + 1;
+		expense.Description = data.Description;
+		expense.Type = data.Type;
+		expense.Value = data.Value;
+		this.expenses.push(expense);
+  }
+
+  viewExpense(id){
+	  var expense = this.expenses.find(myObj => myObj.ExpenseId == id);
+	  let alert = this.alertCtrl.create({
+		  title: '<h1>' + expense.Description + '</h1>',
+		  subTitle: '<b>Value:</b> $' +  this.formatMoney(expense.Value) + '<br/> <b>Type:</b> ' + expense.Type,
+		  buttons: ['OK']
+		});
+		alert.present();
+  }
 	  
-	  formatMoney(value){
-		  return value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-	  }
+  formatMoney(value){
+	  return parseFloat(value).toFixed(2);
+  }
 }
