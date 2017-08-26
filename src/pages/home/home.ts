@@ -2,22 +2,23 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController  } from 'ionic-angular';
 import { Tasks } from "./Tasks";
 
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [Tasks]
 })
 export class HomePage {
-		
-  tasks = [
-		{ "TaskId": 0, "Name": "Chris", "Task": "Clean the bathroom", "Status": 0, "Deadline": '2017-08-30' },
-		{ "TaskId": 1, "Name": "William", "Task": "Clean the kitchen", "Status": 1, "Deadline": '2017-08-30' },
-		{ "TaskId": 2, "Name": "Paul", "Task": "Take the trash out", "Status": 2, "Deadline": '2017-08-30' },
-		{ "TaskId": 3, "Name": "Ash", "Task": "Clean the floors", "Status": 1, "Deadline": '2017-08-30' }
-	];
-
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 	
+	tasks: FirebaseListObservable<any>;
+
+  constructor(public navCtrl: NavController, 
+				public alertCtrl: AlertController, 
+				public loadingCtrl: LoadingController,
+				public database: AngularFireDatabase) {
+	
+	this.tasks = this.database.list('/tasks');
 	  
   }
   
@@ -75,8 +76,7 @@ export class HomePage {
   }
   
   addTask(data){
-	  var task = new Tasks();
-		task.TaskId = this.tasks.length + 1;
+		var task = new Tasks();
 		task.Name = data.ResponsablePerson;
 		task.Task = data.Title;
 		task.Status = 2;
