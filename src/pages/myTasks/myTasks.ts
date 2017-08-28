@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   selector: 'page-about',
   templateUrl: 'myTasks.html'
 })
 export class MyTasksPage {
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  tasks: FirebaseListObservable<any>;
 
+  constructor(public navCtrl: NavController, 
+    public alertCtrl: AlertController,
+    public database: AngularFireDatabase) {
+
+      this.tasks = this.database.list('/tasks');
   }
   
-  confirmChange(){
+  confirmChange(task){
 	  let confirm = this.alertCtrl.create({
       title: 'Confirm',
       message: 'Are you sure that you finished this task?',
@@ -25,7 +32,7 @@ export class MyTasksPage {
         {
           text: 'Yes',
           handler: () => {
-            console.log('Agree clicked');
+            alert(task);
           }
         }
       ]

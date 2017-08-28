@@ -15,12 +15,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyABlhckzPFpFAjjhKNkumLkxR1VFe*****",
-    authDomain: "hometasks-1e***.firebaseapp.com",
-    databaseURL: "https://hometasks-1e***.firebaseio.com",
-    projectId: "hometasks-1e***",
-    storageBucket: "",
-    messagingSenderId: "8345617912**"
+  apiKey: "AIzaSyABlhckzPFpFAjjhKNkumLkxR1VFe*****",
+  authDomain: "hometasks-1e***.firebaseapp.com",
+  databaseURL: "https://hometasks-1e***.firebaseio.com",
+  projectId: "hometasks-1e***",
+  storageBucket: "",
+  messagingSenderId: "8345617912**"
 }
 
 @NgModule({

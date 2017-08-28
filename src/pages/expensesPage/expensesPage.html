@@ -26,7 +26,7 @@
 			
 		</ion-col>
 	</ion-row>
-	<ion-item *ngFor="let expense of expenses">
+	<ion-item *ngFor="let expense of expenses | async">
 		<ion-row>
 			<ion-col col-4 align="center">
 				{{expense.Description}}
@@ -35,7 +35,7 @@
 				{{expense.Type}}
 			</ion-col>
 			<ion-col col-4 align="center">
-				<a (click)="viewExpense(expense.ExpenseId)"><ion-icon name="search" item-start></ion-icon> Detail </a>
+				<a (click)="viewExpense(expense)"><ion-icon name="search" item-start></ion-icon> Detail </a>
 			</ion-col>
 		</ion-row>
 	</ion-item>
