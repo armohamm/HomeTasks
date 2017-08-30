@@ -11,7 +11,8 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 })
 export class HomePage {
 	
-	tasks: FirebaseListObservable<any>;
+  tasks: FirebaseListObservable<any>;
+  private date;
 
   constructor(public navCtrl: NavController, 
 				public alertCtrl: AlertController, 

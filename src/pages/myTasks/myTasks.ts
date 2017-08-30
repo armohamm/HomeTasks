@@ -32,7 +32,8 @@ export class MyTasksPage {
         {
           text: 'Yes',
           handler: () => {
-            alert(task);
+            task.Status = 1;
+            this.database.object('/tasks/' + task.$key).update(task);
           }
         }
       ]
