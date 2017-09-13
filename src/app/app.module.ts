@@ -7,6 +7,7 @@ import { MyTasksPage } from '../pages/myTasks/myTasks';
 import { ExpensesPage } from '../pages/expensesPage/expensesPage';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { CompletedTasksPage } from '../pages/completedTasks/completedTasks';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,12 +16,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyABlhckzPFpFAjjhKNkumLkxR1VFe8XoQM",
-    authDomain: "hometasks-1e6f8.firebaseapp.com",
-    databaseURL: "https://hometasks-1e6f8.firebaseio.com",
-    projectId: "hometasks-1e6f8",
-    storageBucket: "hometasks-1e6f8.appspot.com",
-    messagingSenderId: "834561791283"
+  apiKey: "AIzaSyABlhckzPFpFAjjhKNkumLkxR1VFe*****",
+  authDomain: "hometasks-1e***.firebaseapp.com",
+  databaseURL: "https://hometasks-1e***.firebaseio.com",
+  projectId: "hometasks-1e***",
+  storageBucket: "",
+  messagingSenderId: "8345617912**"
 }
 
 @NgModule({
@@ -29,7 +30,8 @@ export const firebaseConfig = {
     MyTasksPage,
     ExpensesPage,
     HomePage,
-    TabsPage
+    TabsPage,
+	CompletedTasksPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ export const firebaseConfig = {
     MyTasksPage,
     ExpensesPage,
     HomePage,
-    TabsPage
+    TabsPage,
+	CompletedTasksPage
   ],
   providers: [
     StatusBar,

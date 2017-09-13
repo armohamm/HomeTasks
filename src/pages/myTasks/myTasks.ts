@@ -15,8 +15,13 @@ export class MyTasksPage {
     public alertCtrl: AlertController,
     public database: AngularFireDatabase) {
 
-      this.tasks = this.database.list('/tasks');
-  }
+      this.tasks = this.database.list('/tasks', {
+		  query: {
+		  orderByChild: 'Status',
+		  equalTo: 2
+		  }
+	  });
+}
   
   confirmChange(task){
 	  let confirm = this.alertCtrl.create({

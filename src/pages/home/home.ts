@@ -18,7 +18,13 @@ export class HomePage {
 				public loadingCtrl: LoadingController,
 				public database: AngularFireDatabase) {
 	
-	this.tasks = this.database.list('/tasks');
+	this.tasks = this.database.list('/tasks', {
+		  query: {
+		  orderByChild: 'Status',
+		  startAt: 2,
+		  endAt: 3
+		  }
+	  });
 	  
   }
   
