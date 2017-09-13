@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title id="title"><ion-icon name="checkmark-circle" item-start class="done"></ion-icon> Completed Tasks</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-grid>
+	<ion-row>
+	<ion-col col-12>
+		<ion-list>
+			<ion-item *ngFor="let task of tasks | async">
+			<ion-icon name="checkmark-circle" class="done" item-start></ion-icon>
+			<h2>{{task.Name}}</h2>
+			<h3>{{task.Task}}</h3>
+			<p>Deadline: <strong>{{task.Deadline | date :  "EEEE - MMMM d, y"}}</strong></p>		
+		</ion-item>
+		</ion-list>  
+	</ion-col>
+	</ion-row>
+</ion-grid>
+
+</ion-content>

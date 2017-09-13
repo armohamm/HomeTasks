@@ -13,7 +13,7 @@
 	  <ion-item *ngFor="let task of tasks | async" >
 		  <ion-label>
 			<h1>{{task.Task}}</h1>
-			<h3>Deadline: {{task.Deadline}}</h3>
+			<h3>Deadline: <strong>{{task.Deadline | date :  "EEEE - MMMM d, y"}}</strong></h3>
 		  </ion-label>
 		<ion-toggle *ngIf="task.Status == 0 || task.Status == 2" checked="false" (ionChange)="confirmChange(task)" item-end></ion-toggle>
 		<ion-toggle *ngIf="task.Status == 1" checked="true" disabled="true" item-end></ion-toggle>
