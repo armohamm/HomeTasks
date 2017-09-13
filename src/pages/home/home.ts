@@ -12,7 +12,6 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 export class HomePage {
 	
   tasks: FirebaseListObservable<any>;
-  private date;
 
   constructor(public navCtrl: NavController, 
 				public alertCtrl: AlertController, 
@@ -39,7 +38,7 @@ export class HomePage {
 		{
           name: 'Deadline',
           placeholder: 'Deadline',
-		  type: 'Date'
+		  type: 'date'
         },
       ],
       buttons: [
