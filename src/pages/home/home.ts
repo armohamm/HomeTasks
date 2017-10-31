@@ -43,13 +43,8 @@ export class HomePage {
         },
 		  {
           name: 'Deadline',
-<<<<<<< HEAD
           type: 'date',
           placeholder: 'MM/DD/YYYY'
-=======
-          placeholder: 'Deadline',
-		  type: 'date'
->>>>>>> e7df9c06eafd525cc3a51fda126d9659d04bb417
         },
       ],
       buttons: [
