@@ -18,7 +18,13 @@ export class HomePage {
 				public loadingCtrl: LoadingController,
 				public database: AngularFireDatabase) {
 	
-	this.tasks = this.database.list('/tasks');
+	this.tasks = this.database.list('/tasks', {
+		  query: {
+		  orderByChild: 'Status',
+		  startAt: 2,
+		  endAt: 3
+		  }
+	  });
 	  
   }
   
@@ -37,8 +43,13 @@ export class HomePage {
         },
 		  {
           name: 'Deadline',
+<<<<<<< HEAD
           type: 'date',
           placeholder: 'MM/DD/YYYY'
+=======
+          placeholder: 'Deadline',
+		  type: 'date'
+>>>>>>> e7df9c06eafd525cc3a51fda126d9659d04bb417
         },
       ],
       buttons: [
